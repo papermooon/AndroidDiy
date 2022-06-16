@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Log.e("hello","点击确认");
+                        Intent intent = new Intent(com.example.myapplication.MainActivity.this,com.example.myapplication.WakeUpService.class);
+                        startService(intent);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -50,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void shutDownAlarm(View v){
+        Intent intent = new Intent(this, WakeUpService.class);
+        stopService(intent);
 
     }
 }
