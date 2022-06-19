@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void refreshAlarm(View v){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
-//        .setIcon(R.drawable.ic_baseline_all_inclusive_24)
         builder.setTitle("同步进度")
                 .setMessage("正在同步当前体力:"+currentHP.getText().toString())
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -32,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Log.e("hello","点击确认");
                         Intent intent = new Intent(com.example.myapplication.MainActivity.this,com.example.myapplication.WakeUpService.class);
+                        intent.putExtra("checktime",currentHP.getText().toString());
                         startService(intent);
+//                        sendBroadcast(intent);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
